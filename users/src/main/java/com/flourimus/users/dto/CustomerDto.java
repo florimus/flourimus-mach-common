@@ -1,5 +1,7 @@
 package com.flourimus.users.dto;
 
+import java.time.LocalDateTime;
+
 import com.flourimus.users.enums.GrantTypes;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Customer {
+public class CustomerDto {
 
     private Integer id;
 
@@ -20,7 +22,7 @@ public class Customer {
 
     private String email;
 
-    private Phone phone;
+    private PhoneDto phone;
 
     private String avatar;
 
@@ -28,11 +30,11 @@ public class Customer {
 
     private GrantTypes grandType;
 
-    private String dob;
+    private LocalDateTime dob;
 
     private Integer roleId;
 
-    private CustomerToken tokens;
+    private CustomerTokenDto tokens;
 
     private Integer organizationId;
 
@@ -46,9 +48,9 @@ public class Customer {
 
     private boolean enabled;
 
-    private String createdAt;
+    private LocalDateTime createdAt;
 
-    private String updatedAt;
+    private LocalDateTime updatedAt;
 
     private String createdBy;
 

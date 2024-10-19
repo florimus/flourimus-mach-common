@@ -1,11 +1,15 @@
 package com.flourimus.users.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-public class Phone {
+@AllArgsConstructor
+@NoArgsConstructor
+public class PhoneDto {
 
     private String dialCode;
 

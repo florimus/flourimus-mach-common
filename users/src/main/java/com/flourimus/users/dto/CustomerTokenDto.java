@@ -1,12 +1,17 @@
 package com.flourimus.users.dto;
 
 import com.flourimus.users.enums.TokensKeys;
+
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-public class CustomerToken {
+@AllArgsConstructor
+@NoArgsConstructor
+public class CustomerTokenDto {
 
     private TokensKeys key;
 
