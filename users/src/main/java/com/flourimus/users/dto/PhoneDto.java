@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Phone {
+public class PhoneDto {
 
     private String dialCode;
 

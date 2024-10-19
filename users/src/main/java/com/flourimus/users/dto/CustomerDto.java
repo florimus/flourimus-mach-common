@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Customer {
+public class CustomerDto {
 
     private Integer id;
 
@@ -20,7 +20,7 @@ public class Customer {
 
     private String email;
 
-    private Phone phone;
+    private PhoneDto phone;
 
     private String avatar;
 
@@ -32,7 +32,7 @@ public class Customer {
 
     private Integer roleId;
 
-    private CustomerToken tokens;
+    private CustomerTokenDto tokens;
 
     private Integer organizationId;
 

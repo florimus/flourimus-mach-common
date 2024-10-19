@@ -1,14 +1,14 @@
 package com.flourimus.users.service;
 
-import com.flourimus.users.dto.Customer;
+import com.flourimus.users.dto.CustomerDto;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
     @Override
-    public Customer getCustomer(String id) {
-        return Customer.builder()
+    public CustomerDto getCustomer(final Integer id) {
+        return CustomerDto.builder()
                 .id(1)
                 .email("guest@flourimus.com")
                 .build();

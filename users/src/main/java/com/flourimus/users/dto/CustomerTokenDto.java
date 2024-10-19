@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CustomerToken {
+public class CustomerTokenDto {
 
     private TokensKeys key;
 
