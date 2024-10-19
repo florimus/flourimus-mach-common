@@ -20,7 +20,7 @@ public class SecurityConfig {
                 .authorizeExchange(auth -> auth
                         .pathMatchers("/graphql").authenticated()
                         .anyExchange().permitAll()
-                ).addFilterBefore(new JwtAuthenticationFilter(), SecurityWebFiltersOrder.AUTHENTICATION);
+                ).addFilterBefore(new ContextFilter(), SecurityWebFiltersOrder.AUTHENTICATION);
         return http.build();
     }
 

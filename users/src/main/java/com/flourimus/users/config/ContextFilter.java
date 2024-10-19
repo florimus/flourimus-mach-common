@@ -14,14 +14,14 @@ import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 @Configuration
-public class JwtAuthenticationFilter implements WebFilter {
+public class ContextFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         // Create a default UserDetails object for the static user
         UserDetails userDetails = User.withUsername("authorizedUser")
                 .password("") // No need for password since we're authorizing all
-                .authorities("ROLE_USER") // Provide a static role or authority
+                .authorities("ROLE_ADMIN", "ROLE_TEST") // Provide a static role or authority
                 .accountExpired(false)
                 .accountLocked(false)
                 .credentialsExpired(false)
