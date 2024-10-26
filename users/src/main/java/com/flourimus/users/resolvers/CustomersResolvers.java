@@ -15,10 +15,17 @@ public class CustomersResolvers {
 
     private final CustomerFacade customerFacade;
 
+    /**
+     * Retrieves a customer by their ID.
+     *
+     * @param id the ID of the customer to retrieve.
+     * @return a Mono that emits the CustomerDto of the specified customer.
+     *         Requires the user to have ROLE_ADMIN authority.
+     */
     @QueryMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Mono<CustomerDto> getCustomer(@Argument final Integer id) {
-        return Mono.just(customerFacade.getCustomer(id));
+        return customerFacade.getCustomer(id);
     }
 
 }
