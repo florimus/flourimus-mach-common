@@ -2,7 +2,7 @@ package com.flourimus.users.factory.entity;
 
 import java.time.LocalDateTime;
 
-import com.flourimus.users.enums.GrantTypes;
+import com.flourimus.users.common.enums.GrantTypes;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

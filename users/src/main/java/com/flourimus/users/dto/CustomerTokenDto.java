@@ -1,6 +1,6 @@
 package com.flourimus.users.dto;
 
-import com.flourimus.users.enums.TokensKeys;
+import com.flourimus.users.common.enums.TokensKeys;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package com.flourimus.users.factory.entity;
 
-import com.flourimus.users.enums.TokensKeys;
+import com.flourimus.users.common.enums.TokensKeys;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
