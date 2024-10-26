@@ -35,6 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
     public Mono<CustomerDto> getCustomer(final Integer id) {
         log.info("Searching for customer by id: {}", id);
         if (id == null) {
+            log.info("Cannot find customer with invalid id: {}", id);
             throw new BadRequstException("Id is mandatory", CustomerErrorCodes.INVALID_ID);
         }
         Customer customer = customerDaoFactory.getCustomerDao()
