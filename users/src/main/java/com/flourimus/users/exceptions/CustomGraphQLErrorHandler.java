@@ -32,10 +32,10 @@ public class CustomGraphQLErrorHandler extends DataFetcherExceptionResolverAdapt
         Map<String, Object> customError = new HashMap<>();
 
         if (ex instanceof ExceptionFamily) {
-            ExceptionFamily notFountError  = NotFoundException.class.cast(ex);
-            customError.put("message", notFountError.getMessage());
-            customError.put("status", notFountError.getStatus());
-            customError.put("code", notFountError.getErrorCode());
+            ExceptionFamily exception  = ExceptionFamily.class.cast(ex);
+            customError.put("message", exception.getMessage());
+            customError.put("status", exception.getStatus());
+            customError.put("code", exception.getErrorCode());
         }
 
 
