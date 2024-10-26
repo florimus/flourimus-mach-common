@@ -16,7 +16,35 @@ spring:
               - Path=/users/**
             filters:
               - RewritePath=/users/(?<remaining>.*), /${remaining}
+              - name: CircuitBreaker
+                args:
+                  name: commonCircuitBreaker
+                  fallbackUri: forward:/fallback
 eureka:
+  instance:
+    healthCheckUrlPath: /actuator/health
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+resilience4j.circuitbreaker:
+  instances:
+    commonCircuitBreaker:
+      slidingWindowSize: 10
+      failureRateThreshold: 50
+      waitDurationInOpenState: 2s
+      permittedNumberOfCallsInHalfOpenState: 3
+      recordExceptions:
+        - java.net.ConnectException
+        - java.net.SocketTimeoutException
