@@ -7,7 +7,7 @@ public class BadRequstException extends RuntimeException implements ExceptionFam
     private final String errorCode;
     private int status = 400;
 
-    public BadRequstException(String message, String errorCode) {
+    public BadRequstException(final String message, final String errorCode) {
         super(message);
         this.message = message;
         this.errorCode = errorCode;

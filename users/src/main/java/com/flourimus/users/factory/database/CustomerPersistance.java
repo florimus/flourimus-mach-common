@@ -24,7 +24,7 @@ public class CustomerPersistance implements CustomerDao {
      * @return the saved customer
      */
     @Override
-    public Customer save(Customer customer) {
+    public Customer save(final Customer customer) {
         return customerRepository.save(customer);
     }
 
@@ -36,7 +36,7 @@ public class CustomerPersistance implements CustomerDao {
      * @return the customer found, or an empty optional if not found
      */
     @Override
-    public Optional<Customer> findCustomerById(Integer id) {
+    public Optional<Customer> findCustomerById(final Integer id) {
         return customerRepository.getCustomerById(id);
     }
     

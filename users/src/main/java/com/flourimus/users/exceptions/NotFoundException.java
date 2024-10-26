@@ -7,7 +7,7 @@ public class NotFoundException extends RuntimeException implements ExceptionFami
     private final String errorCode;
     private int status = 404;
 
-    public NotFoundException(String message, String errorCode) {
+    public NotFoundException(final String message, final String errorCode) {
         super(message);
         this.message = message;
         this.errorCode = errorCode;

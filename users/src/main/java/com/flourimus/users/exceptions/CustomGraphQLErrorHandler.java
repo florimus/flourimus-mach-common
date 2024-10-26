@@ -27,7 +27,7 @@ public class CustomGraphQLErrorHandler extends DataFetcherExceptionResolverAdapt
      * to the user
      */
     @Override
-    protected GraphQLError resolveToSingleError(Throwable ex, DataFetchingEnvironment env) {
+    protected GraphQLError resolveToSingleError(final Throwable ex, final DataFetchingEnvironment env) {
         
         Map<String, Object> customError = new HashMap<>();
 

@@ -8,6 +8,6 @@ import com.flourimus.users.factory.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
-    Optional<Customer> getCustomerById(Integer id);
+    Optional<Customer> getCustomerById(final Integer id);
 
 }
