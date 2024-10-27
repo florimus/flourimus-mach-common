@@ -1,5 +1,7 @@
 package com.flourimus.users.factory.database;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Component;
 
 import com.flourimus.users.factory.dao.CustomerDao;
@@ -14,14 +16,28 @@ public class CustomerPersistance implements CustomerDao {
 
     private final CustomerRepository customerRepository;
 
+    /**
+     * Saves a given customer. Use the returned instance for further operations
+     * as the save operation might have changed the customer instance completely.
+     *
+     * @param customer the customer to save
+     * @return the saved customer
+     */
     @Override
-    public Customer save(Customer customer) {
+    public Customer save(final Customer customer) {
         return customerRepository.save(customer);
     }
 
+    /**
+     * Retrieve a customer by ID.
+     *
+     * @param id the customer ID
+     *
+     * @return the customer found, or an empty optional if not found
+     */
     @Override
-    public Customer findCustomerById(Integer id) {
-        return customerRepository.getReferenceById(id);
+    public Optional<Customer> findCustomerById(final Integer id) {
+        return customerRepository.getCustomerById(id);
     }
     
 }

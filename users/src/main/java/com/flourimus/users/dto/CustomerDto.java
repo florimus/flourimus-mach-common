@@ -2,7 +2,8 @@ package com.flourimus.users.dto;
 
 import java.time.LocalDateTime;
 
-import com.flourimus.users.enums.GrantTypes;
+import com.flourimus.users.common.enums.GrantTypes;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

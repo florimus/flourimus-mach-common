@@ -17,7 +17,7 @@ import reactor.core.publisher.Mono;
 public class ContextFilter implements WebFilter {
 
     @Override
-    public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
+    public Mono<Void> filter(final ServerWebExchange exchange, final WebFilterChain chain) {
         // Create a default UserDetails object for the static user
         UserDetails userDetails = User.withUsername("authorizedUser")
                 .password("") // No need for password since we're authorizing all

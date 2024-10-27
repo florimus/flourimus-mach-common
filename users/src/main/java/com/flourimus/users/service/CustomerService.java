@@ -1,10 +1,11 @@
 package com.flourimus.users.service;
 
 import com.flourimus.users.dto.CustomerDto;
-import org.springframework.graphql.data.method.annotation.Argument;
+
+import reactor.core.publisher.Mono;
 
 public interface CustomerService {
 
-    public CustomerDto getCustomer(@Argument Integer id);
+    public Mono<CustomerDto> getCustomer(final Integer id);
 
 }
