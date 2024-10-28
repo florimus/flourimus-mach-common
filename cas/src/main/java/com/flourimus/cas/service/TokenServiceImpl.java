@@ -2,6 +2,8 @@ package com.flourimus.cas.service;
 
 import org.springframework.stereotype.Service;
 
+import com.flourimus.cas.api.CustomerApis;
+import com.flourimus.cas.dto.CustomerDto;
 import com.flourimus.cas.dto.EmailAndPasswordTokenInput;
 import com.flourimus.cas.dto.TokenResponse;
 
@@ -14,8 +16,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class TokenServiceImpl implements TokenService {
 
-    
-
+    private final CustomerApis customerApis;
     /**
      * Retrieves a token response for the provided email and password input.
      *
@@ -23,8 +24,9 @@ public class TokenServiceImpl implements TokenService {
      * @return a Mono that emits a TokenResponse with the token information.
      */
     @Override
-    public Mono<TokenResponse> getTokenByEmailAndPassword(EmailAndPasswordTokenInput emailAndPasswordTokenInput) {
-        return Mono.just(TokenResponse.builder().email("kkkkk").build());
+    public Mono<TokenResponse> getTokenByEmailAndPassword(final EmailAndPasswordTokenInput emailAndPasswordTokenInput) {
+        CustomerDto customer = customerApis.getCustomerByEmailAndPassword(emailAndPasswordTokenInput);
+        return Mono.just(TokenResponse.builder().email(customer.getEmail()).build());
     }
     
 }
