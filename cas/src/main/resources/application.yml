@@ -1,0 +1,27 @@
+server:
+  port: 6443
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+      path: /playground
+  application:
+    name: cas
+
+eureka:
+  instance:
+    healthCheckUrlPath: /actuator/health
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true

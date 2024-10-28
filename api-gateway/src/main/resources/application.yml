@@ -20,6 +20,16 @@ spring:
                 args:
                   name: commonCircuitBreaker
                   fallbackUri: forward:/fallback
+          - id: cas-service
+            uri: lb://cas
+            predicates:
+              - Path=/cas/**
+            filters:
+              - RewritePath=/cas/(?<remaining>.*), /${remaining}
+              - name: CircuitBreaker
+                args:
+                  name: commonCircuitBreaker
+                  fallbackUri: forward:/fallback
 eureka:
   instance:
     healthCheckUrlPath: /actuator/health

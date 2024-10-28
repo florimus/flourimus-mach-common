@@ -1,0 +1,16 @@
+input EmailAndPasswordTokenInput {
+    email: String!
+    password: String!
+    organizationId: Int!
+    locationId: Int!
+    brandId: Int!
+    channelId: Int!
+}
+
+type TokenResponse {
+    accessToken: String!
+    refreshToken: String!
+    email: String
+    userType: UserTypes!
+    permissions: String!
+}

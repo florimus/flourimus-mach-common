@@ -1,5 +1,6 @@
 rootProject.name = 'flourimus-common'
 
+include 'cas'
 include 'users'
 include 'discoveryServer'
 include 'api-gateway'
