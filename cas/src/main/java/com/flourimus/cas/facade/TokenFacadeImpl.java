@@ -23,7 +23,7 @@ public class TokenFacadeImpl implements TokenFacade {
      * @return a Mono that emits a TokenResponse containing the token information.
      */
     @Override
-    public Mono<TokenResponse> getTokenByEmailAndPassword(EmailAndPasswordTokenInput emailAndPasswordTokenInput) {
+    public Mono<TokenResponse> getTokenByEmailAndPassword(final EmailAndPasswordTokenInput emailAndPasswordTokenInput) {
         return tokenService.getTokenByEmailAndPassword(emailAndPasswordTokenInput);
     }
     

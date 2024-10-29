@@ -5,7 +5,7 @@ server:
   port: 8761
 eureka:
   server:
-    enableSelfPreservation: false
+    enableSelfPreservation: true
     evictionIntervalTimerInMs: 2000
   client:
     registerWithEureka: false
