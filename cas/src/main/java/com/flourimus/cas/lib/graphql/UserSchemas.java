@@ -1,9 +1,26 @@
 package com.flourimus.cas.lib.graphql;
 
 public class UserSchemas {
+
     public static final String customerByEmailAndPassword = """
-        query GetCustomer($id: ID!) {
-            response: getCustomer(id: $id) {
+        query GetCustomerByEmailAndPassword(
+            $email: String!,
+            $password: String!,
+            $organizationId: Int!,
+            $locationId: Int!,
+            $brandId: Int!,
+            $channelId: Int!
+        ) {
+            response: getCustomerByEmailAndPassword(
+                customerByEmailAndPasswordRequest: {
+                  password: $password,
+                  email: $email,
+                  organizationId: $organizationId,
+                  locationId: $locationId,
+                  brandId: $brandId,
+                  channelId: $channelId
+                }
+            ) {
                 id
                 firstName
                 lastName
@@ -13,7 +30,9 @@ public class UserSchemas {
                 locationId
                 brandId
                 channelId
+              }
             }
-        }
-    """;
+        """
+    ;
+
 }
