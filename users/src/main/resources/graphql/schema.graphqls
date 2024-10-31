@@ -1,3 +1,4 @@
 type Query {
     getCustomer(id: ID!): Customer
+    getCustomerByEmailAndPassword(customerByEmailAndPasswordRequest: CustomerByEmailAndPasswordRequest!): Customer
 }

@@ -1,5 +1,6 @@
 package com.flourimus.users.resolvers;
 
+import com.flourimus.users.dto.CustomerByEmailAndPasswordRequest;
 import com.flourimus.users.dto.CustomerDto;
 import com.flourimus.users.facade.CustomerFacade;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,18 @@ public class CustomersResolvers {
     public Mono<CustomerDto> getCustomer(@Argument final Integer id) {
         log.info("Requesting for customer by id: {}", id);
         return customerFacade.getCustomer(id);
+    }
+
+    /**
+     * Retrieves a customer based on their email and password details.
+     *
+     * @param customerByEmailAndPasswordRequest the request containing the customer's email and password.
+     * @return a Mono that emits the CustomerDto of the specified customer.
+     */
+    @QueryMapping
+    public Mono<CustomerDto> getCustomerByEmailAndPassword(@Argument final CustomerByEmailAndPasswordRequest customerByEmailAndPasswordRequest) {
+        log.info("Requesting for customer by details: {}", customerByEmailAndPasswordRequest);
+        return customerFacade.getCustomerByEmailAndPassword(customerByEmailAndPasswordRequest);
     }
 
 }

@@ -1,7 +1,11 @@
 package com.flourimus.users.service;
 
+import com.flourimus.users.api.OrganisationApis;
 import com.flourimus.users.common.constants.CustomerErrorCodes;
+import com.flourimus.users.dto.CustomerByEmailAndPasswordRequest;
 import com.flourimus.users.dto.CustomerDto;
+import com.flourimus.users.dto.OrganisationVitalsRequest;
+import com.flourimus.users.dto.OrganisationVitalsResponse;
 import com.flourimus.users.exceptions.BadRequstException;
 import com.flourimus.users.exceptions.NotFoundException;
 import com.flourimus.users.factory.CustomerDaoFactory;
@@ -22,6 +26,8 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerDaoFactory customerDaoFactory;
+
+    private final OrganisationApis organisationApis;
 
     /**
      * Retrieves a customer by their ID.
@@ -46,5 +52,16 @@ public class CustomerServiceImpl implements CustomerService {
                 });
         log.info("Found customer: {}", customer);
         return Mono.just(CustomerHelper.convertCustomerToCustomerDto(customer));
+    }
+
+    @Override
+    public Mono<CustomerDto> getCustomerByEmailAndPassword(
+            CustomerByEmailAndPasswordRequest customerByEmailAndPasswordRequest) {
+        OrganisationVitalsRequest organisationVitalsRequest = CustomerHelper
+                .convertCustomerByEmailAndPasswordRequestToOrganisationVitalsRequest(customerByEmailAndPasswordRequest);
+        log.info("finding organization authentication configuation by details: {}", organisationVitalsRequest);
+        OrganisationVitalsResponse organisationVitalsResponse = organisationApis.getCustomerByEmailAndPassword(organisationVitalsRequest);
+        log.info("Found organization authentication configuration: {}", organisationVitalsResponse);
+        return Mono.just(CustomerDto.builder().build());
     }
 }

@@ -30,3 +30,13 @@ type Customer {
     createdBy: String!
     updatedBy: String!
 }
+
+
+input CustomerByEmailAndPasswordRequest {
+    email: String!
+    password: String!
+    organizationId: Int!
+    locationId: Int!
+    brandId: Int!
+    channelId: Int!
+}
