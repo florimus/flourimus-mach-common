@@ -23,10 +23,12 @@ public class CustomerCustomRepositoryImpl implements CustomerCustomRepository {
             final OrganisationVitalsResponse organisationVitals) {
 
         String queryString = QueryStringConstructor.customerByEmail(organisationVitals);
+
         TypedQuery<Customer> query = entityManager.createQuery(
                 queryString, Customer.class);
+
         query.setParameter("email", request.getEmail());
-        query.setParameter("password", request.getPassword());
+
         if (organisationVitals.isOrganizationId()) {
             query.setParameter("organizationId", request.getOrganizationId());
         }

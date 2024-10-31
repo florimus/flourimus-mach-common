@@ -4,21 +4,28 @@ import com.flourimus.users.dto.OrganisationVitalsResponse;
 
 public class QueryStringConstructor {
 
-    public static String customerByEmail = "SELECT c FROM Customer c WHERE c.email = :email AND c.password = :password";
-
+    /**
+     * Builds a query string that selects a customer from the database, based on the values in a {@link OrganisationVitalsResponse}.
+     * The query string will include the email of the customer, as well as any other organisation vitals that the response indicates should be included.
+     * @param organisationVitals the organisation vitals to include in the query string
+     * @return the query string
+     */
     public static String customerByEmail(OrganisationVitalsResponse organisationVitals) {
+        StringBuilder queryBuilder = new StringBuilder("SELECT c FROM Customer c WHERE c.email = :email");
+
         if (organisationVitals.isOrganizationId()) {
-            customerByEmail = customerByEmail + " AND c.organizationId = :organizationId";
+            queryBuilder.append(" AND c.organizationId = :organizationId");
+        }
+        if (organisationVitals.isLocationId()) {
+            queryBuilder.append(" AND c.locationId = :locationId");
         }
         if (organisationVitals.isChannelId()) {
-            customerByEmail = customerByEmail + " AND c.channelId = :channelId";
+            queryBuilder.append(" AND c.channelId = :channelId");
         }
         if (organisationVitals.isBrandId()) {
-            customerByEmail = customerByEmail + " AND c.brandId = :brandId";
+            queryBuilder.append(" AND c.brandId = :brandId");
         }
-        if (organisationVitals.isChannelId()) {
-            customerByEmail = customerByEmail + " AND c.locationId = :locationId";
-        }
-        return customerByEmail;
+
+        return queryBuilder.toString();
     }
 }
