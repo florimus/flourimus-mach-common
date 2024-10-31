@@ -1,0 +1,23 @@
+{
+  "name": "organisation",
+  "module": "server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun run index.ts",
+    "dev": "nodemon index.ts"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.11.0",
+    "@elysiajs/apollo": "^1.1.1",
+    "elysia": "^1.1.23",
+    "graphql": "^16.9.0",
+    "moment": "^2.30.1",
+    "mongoose": "^8.7.3"
+  }
+}
