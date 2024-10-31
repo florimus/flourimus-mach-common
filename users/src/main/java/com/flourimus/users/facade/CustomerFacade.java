@@ -1,7 +1,5 @@
 package com.flourimus.users.facade;
 
-import org.springframework.graphql.data.method.annotation.Argument;
-
 import com.flourimus.users.dto.CustomerByEmailAndPasswordRequest;
 import com.flourimus.users.dto.CustomerDto;
 
@@ -11,6 +9,7 @@ public interface CustomerFacade {
 
     public Mono<CustomerDto> getCustomer(final Integer id);
 
-    public Mono<CustomerDto> getCustomerByEmailAndPassword(@Argument final CustomerByEmailAndPasswordRequest customerByEmailAndPasswordRequest);
+    public Mono<CustomerDto> getCustomerByEmailAndPassword(
+            final CustomerByEmailAndPasswordRequest customerByEmailAndPasswordRequest);
 
 }

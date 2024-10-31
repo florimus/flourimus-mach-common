@@ -12,6 +12,7 @@ public interface CustomerDao {
 
     Optional<Customer> findCustomerById(final Integer id);
 
-    Optional<Customer> findCustomerByEmail(final CustomerByEmailAndPasswordRequest request, final OrganisationVitalsResponse OrganisationVitals);
-    
+    Optional<Customer> findCustomerByEmailAndPassword(final CustomerByEmailAndPasswordRequest request,
+            final OrganisationVitalsResponse OrganisationVitals);
+
 }

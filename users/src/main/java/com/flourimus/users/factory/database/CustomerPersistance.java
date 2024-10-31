@@ -46,15 +46,15 @@ public class CustomerPersistance implements CustomerDao {
      * Retrieves a customer by their email and password details, as well as the
      * organisation vitals of the organisation they are associated with.
      *
-     * @param request the customer by email and password request to use
+     * @param request            the customer by email and password request to use
      * @param organisationVitals the organisation vitals of the associated
-     * organisation
+     *                           organisation
      * @return the customer found, or an empty optional if not found
      */
     @Override
-    public Optional<Customer> findCustomerByEmail(final CustomerByEmailAndPasswordRequest request,
+    public Optional<Customer> findCustomerByEmailAndPassword(final CustomerByEmailAndPasswordRequest request,
             final OrganisationVitalsResponse organisationVitals) {
-        return customerRepository.findCustomerByEmail(request, organisationVitals);
+        return customerRepository.findCustomerByEmailAndPassword(request, organisationVitals);
     }
 
 }

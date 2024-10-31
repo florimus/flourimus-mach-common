@@ -54,23 +54,37 @@ public class CustomerServiceImpl implements CustomerService {
         return Mono.just(CustomerHelper.convertCustomerToCustomerDto(customer));
     }
 
+    /**
+     * Retrieves a customer by their email and password details, as well as the
+     * organisation vitals of the organisation they are associated with.
+     *
+     * @param customerByEmailAndPasswordRequest the request containing the
+     *                                          customer's email and password.
+     * @return a Mono that emits the CustomerDto of the specified customer.
+     * @throws BadRequstException if the request is invalid
+     * @throws NotFoundException  if no customer is found with the given email and
+     *                            password
+     */
     @Override
     public Mono<CustomerDto> getCustomerByEmailAndPassword(
-            CustomerByEmailAndPasswordRequest customerByEmailAndPasswordRequest) {
+            final CustomerByEmailAndPasswordRequest customerByEmailAndPasswordRequest) {
+
         OrganisationVitalsRequest organisationVitalsRequest = CustomerHelper
                 .convertCustomerByEmailAndPasswordRequestToOrganisationVitalsRequest(customerByEmailAndPasswordRequest);
-        log.info("finding organization authentication configuation by details: {}", organisationVitalsRequest);
+        log.info("finding organization's authentication configuation by details: {}", organisationVitalsRequest);
+
         OrganisationVitalsResponse organisationVitalsResponse = organisationApis
                 .getCustomerByEmailAndPassword(organisationVitalsRequest);
         log.info("Found organization authentication configuration: {}", organisationVitalsResponse);
 
         Customer customer = customerDaoFactory.getCustomerDao()
-                .findCustomerByEmail(customerByEmailAndPasswordRequest, organisationVitalsResponse)
+                .findCustomerByEmailAndPassword(customerByEmailAndPasswordRequest, organisationVitalsResponse)
                 .orElseThrow(() -> {
                     log.error("Customer not found with details: {}", customerByEmailAndPasswordRequest);
                     throw new NotFoundException("Customer not found", CustomerErrorCodes.NOT_FOUND);
                 });
         log.info("Found customer: {}", customer);
+
         return Mono.just(CustomerHelper.convertCustomerToCustomerDto(customer));
     }
 }

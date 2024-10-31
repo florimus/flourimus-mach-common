@@ -6,7 +6,7 @@ import com.flourimus.users.dto.OrganisationVitalsResponse;
 import com.flourimus.users.factory.entity.Customer;
 
 public interface CustomerCustomRepository {
-    
-    public Optional<Customer> findCustomerByEmail(final CustomerByEmailAndPasswordRequest request,
+
+    public Optional<Customer> findCustomerByEmailAndPassword(final CustomerByEmailAndPasswordRequest request,
             final OrganisationVitalsResponse organisationVitals);
 }
