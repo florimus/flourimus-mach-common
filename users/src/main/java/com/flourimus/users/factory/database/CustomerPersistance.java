@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
+import com.flourimus.users.dto.CustomerByEmailAndPasswordRequest;
+import com.flourimus.users.dto.OrganisationVitalsResponse;
 import com.flourimus.users.factory.dao.CustomerDao;
 import com.flourimus.users.factory.entity.Customer;
 import com.flourimus.users.factory.repository.CustomerRepository;
@@ -39,5 +41,20 @@ public class CustomerPersistance implements CustomerDao {
     public Optional<Customer> findCustomerById(final Integer id) {
         return customerRepository.getCustomerById(id);
     }
-    
+
+    /**
+     * Retrieves a customer by their email and password details, as well as the
+     * organisation vitals of the organisation they are associated with.
+     *
+     * @param request the customer by email and password request to use
+     * @param organisationVitals the organisation vitals of the associated
+     * organisation
+     * @return the customer found, or an empty optional if not found
+     */
+    @Override
+    public Optional<Customer> findCustomerByEmail(final CustomerByEmailAndPasswordRequest request,
+            final OrganisationVitalsResponse organisationVitals) {
+        return customerRepository.findCustomerByEmail(request, organisationVitals);
+    }
+
 }

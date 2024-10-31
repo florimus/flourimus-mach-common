@@ -60,8 +60,17 @@ public class CustomerServiceImpl implements CustomerService {
         OrganisationVitalsRequest organisationVitalsRequest = CustomerHelper
                 .convertCustomerByEmailAndPasswordRequestToOrganisationVitalsRequest(customerByEmailAndPasswordRequest);
         log.info("finding organization authentication configuation by details: {}", organisationVitalsRequest);
-        OrganisationVitalsResponse organisationVitalsResponse = organisationApis.getCustomerByEmailAndPassword(organisationVitalsRequest);
+        OrganisationVitalsResponse organisationVitalsResponse = organisationApis
+                .getCustomerByEmailAndPassword(organisationVitalsRequest);
         log.info("Found organization authentication configuration: {}", organisationVitalsResponse);
-        return Mono.just(CustomerDto.builder().build());
+
+        Customer customer = customerDaoFactory.getCustomerDao()
+                .findCustomerByEmail(customerByEmailAndPasswordRequest, organisationVitalsResponse)
+                .orElseThrow(() -> {
+                    log.error("Customer not found with details: {}", customerByEmailAndPasswordRequest);
+                    throw new NotFoundException("Customer not found", CustomerErrorCodes.NOT_FOUND);
+                });
+        log.info("Found customer: {}", customer);
+        return Mono.just(CustomerHelper.convertCustomerToCustomerDto(customer));
     }
 }
