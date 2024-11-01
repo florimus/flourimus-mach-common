@@ -18,8 +18,4 @@ public class TokenResponse {
 
     private String email;
 
-    private UserTypes userType;
-
-    private String permissions;
-
 }
