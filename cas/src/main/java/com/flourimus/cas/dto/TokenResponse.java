@@ -1,6 +1,5 @@
 package com.flourimus.cas.dto;
 
-import com.flourimus.cas.common.enums.UserTypes;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,9 +16,5 @@ public class TokenResponse {
     private String refreshToken;
 
     private String email;
-
-    private UserTypes userType;
-
-    private String permissions;
 
 }

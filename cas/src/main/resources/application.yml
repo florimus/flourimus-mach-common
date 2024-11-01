@@ -8,6 +8,11 @@ spring:
   application:
     name: cas
 
+jwt:
+  secret: p3c8v2m4k7l9b0n6s1q5z3r8y2w7x5f9
+  accessTokenExpirationMs: 86400000
+  refreshTokenExpirationMs: 2592000000
+
 eureka:
   instance:
     healthCheckUrlPath: /actuator/health

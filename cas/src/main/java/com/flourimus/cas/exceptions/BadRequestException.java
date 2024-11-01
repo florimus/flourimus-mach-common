@@ -1,12 +1,12 @@
 package com.flourimus.cas.exceptions;
 
-public class BadRequstException extends RuntimeException implements ExceptionFamily {
+public class BadRequestException extends RuntimeException implements ExceptionFamily {
 
     private final String message;
     private final String errorCode;
     private int status = 400;
 
-    public BadRequstException(final String message, final String errorCode) {
+    public BadRequestException(final String message, final String errorCode) {
         super(message);
         this.message = message;
         this.errorCode = errorCode;

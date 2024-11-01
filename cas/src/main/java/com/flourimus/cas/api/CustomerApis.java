@@ -22,7 +22,12 @@ public class CustomerApis {
 
     public CustomerDto getCustomerByEmailAndPassword(final EmailAndPasswordTokenInput emailAndPasswordTokenInput) {
         Map<String, Object> variables = new HashMap<String,Object>();
-        variables.put("id", emailAndPasswordTokenInput.getBrandId());
+        variables.put("email", emailAndPasswordTokenInput.getEmail());
+        variables.put("password", emailAndPasswordTokenInput.getPassword());
+        variables.put("organizationId", emailAndPasswordTokenInput.getOrganizationId());
+        variables.put("locationId", emailAndPasswordTokenInput.getLocationId());
+        variables.put("brandId", emailAndPasswordTokenInput.getBrandId());
+        variables.put("channelId", emailAndPasswordTokenInput.getChannelId());
         return graphQLService.callGraphQLApi(TARGET_URL, UserSchemas.customerByEmailAndPassword, variables, CustomerDto.class);
     }
 }
