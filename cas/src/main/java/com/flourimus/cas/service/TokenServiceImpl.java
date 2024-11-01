@@ -1,7 +1,7 @@
 package com.flourimus.cas.service;
 
 import com.flourimus.cas.common.constants.CasErrorCodes;
-import com.flourimus.cas.common.utils.JwtTokenUtil;
+import com.flourimus.cas.common.utils.JweTokenUtil;
 import com.flourimus.cas.exceptions.BadRequestException;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class TokenServiceImpl implements TokenService {
 
     private final CustomerApis customerApis;
 
-    private final JwtTokenUtil jwtTokenUtil;
+    private final JweTokenUtil jweTokenUtil;
 
     /**
      * Retrieves a token response for the provided email and password input.
@@ -51,7 +51,7 @@ public class TokenServiceImpl implements TokenService {
 
         try {
             log.info("Creating token customer with details: {}", customer);
-            TokenResponse response = jwtTokenUtil.populateTokenResponse(customer, false);
+            TokenResponse response = jweTokenUtil.populateTokenResponse(customer, false);
             return Mono.just(response);
         } catch (Exception e) {
             throw new BadRequestException("Cannot create JWE token", CasErrorCodes.JWE_CREATION_FAILED);

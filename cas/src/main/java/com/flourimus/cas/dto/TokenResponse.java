@@ -1,6 +1,5 @@
 package com.flourimus.cas.dto;
 
-import com.flourimus.cas.common.enums.UserTypes;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
