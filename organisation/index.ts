@@ -2,6 +2,7 @@ import { Elysia } from "elysia";
 import { apollo } from "@elysiajs/apollo";
 import definitions from "./app/definitions";
 import mongoose from "mongoose";
+import { registerWithEureka } from "./eurekaClient";
 
 const port = process.env.PORT!;
 
@@ -16,4 +17,5 @@ mongoose.connect(process.env.MONGO_URI!).then(() => {
     )
     .listen(port);
   console.log(`🚀 Server ready at http://localhost:${port}/graphql`);
+  registerWithEureka();
 });
